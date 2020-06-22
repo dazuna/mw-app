@@ -1,0 +1,62 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="buscador()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>{{'oferta-privada'|translate}}</ion-title>
+
+    <ion-buttons right>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let oferta_privada of ofertas">
+
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="{{oferta_privada.profilePic}}">
+      </ion-avatar>
+      <h2>{{oferta_privada.companyName}}</h2>
+    </ion-item>
+
+    <img class="headerImage" (click)="ver_oferta_privada(oferta_privada)" src="{{oferta_privada.headerPic}}">
+
+    <ion-card-content>
+      <h2 class="card-subtitle"><b>{{'posicion'|translate}}:</b> {{oferta_privada.puesto}}</h2>
+      <h3 class="card-subtitle"><b>{{'publish-modal-reward'|translate}}:</b>
+        {{oferta_privada.recompensa | currency:'USD':true}} US {{'lbl-usd'|translate}}</h3>
+    </ion-card-content>
+
+    <ion-row class="justify-content-center">
+      <ion-col class="col-6">
+        <button ion-button block clear (click)="autohitch(oferta_privada)" color="light">
+          <ion-icon name="paper-plane"></ion-icon>
+          &nbsp;{{'general-button-apply'|translate}}
+        </button>
+      </ion-col>
+
+      <ion-col class="col-6">
+        <button ion-button block clear (click)="hitch(oferta_privada)" color="light">
+          <ion-icon name="pint"></ion-icon>
+          &nbsp;{{'alerts-icons-hitch'|translate}}
+        </button>
+      </ion-col>
+
+    </ion-row>
+
+  </ion-card>
+  <ion-card *ngIf="numOffers == 0">
+    <ion-card-content>
+      No hay ofertas privadas disponibles.
+    </ion-card-content>
+  </ion-card>
+</ion-content>

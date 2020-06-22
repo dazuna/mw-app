@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{'headeru-menu-conf'|translate}}</ion-title>
+
+    <ion-buttons right>
+      <button ion-button icon-only (click)="_os.openSideMenu()">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div padding>
+    <div (click)="contactPage()">
+      <p>{{'contact-head-lbl'|translate}}.</p>
+    </div>
+    <hr>
+
+    <div (click)="diversityPage()">
+      <p>{{'diversity-title'|translate}}.</p>
+    </div>
+    <hr>
+
+    <div (click)="intellectualPage()">
+      <p>{{'footer-property-label'|translate}}.</p>
+    </div>
+    <hr>
+
+    <div (click)="privacyPage()">
+      <p>{{'footer-policy-label'|translate}}.</p>
+    </div>
+    <hr>
+
+    <div (click)="termsPage()">
+      <p>{{'footer-terms-label'|translate}}.</p>
+    </div>
+    <hr>
+
+    <div (click)="aboutPage()">
+      <p>{{'footer-us-label'|translate}}.</p>
+    </div>
+    <hr>
+
+  </div>
+
+  <div padding>
+    <p>{{'cambioidioma'|translate}}:</p>
+    <idioma></idioma>
+  </div>
+  <hr>
+</ion-content>

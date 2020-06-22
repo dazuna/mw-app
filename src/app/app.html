@@ -1,0 +1,56 @@
+<ion-menu [content]="mycontent" side="right">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title text-center>{{_us.usuario}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <button
+              ion-item
+              detail-none
+              *ngIf="_us.activo()==false"
+              (click)="abrirpagina(index)">
+              <ion-icon class="izquierda"></ion-icon>
+              <span item-end>{{'index-login-button'|translate}}</span>
+      </button>
+
+      <button
+              ion-item
+              detail-none
+              *ngIf="_us.activo()"
+              (click)="abrirpagina(tabs)">
+              <ion-icon class="izquierda"></ion-icon>
+              <span item-end>{{'stats-offers-head'|translate}}</span>
+      </button>
+
+      <button
+              ion-item
+              detail-none
+              *ngIf="_us.activo()"
+              (click)="abrirpagina(ofertas_privadas)">
+              <ion-icon  class="izquierda"></ion-icon>
+              <span item-end>{{'oferta-privada'|translate}}</span>
+      </button>
+
+      <button
+              ion-item
+              detail-none
+              (click)="abrirpagina( configuracion )">
+              <ion-icon name="arrow-back" class="izquierda"></ion-icon>
+              <span item-end>{{'headeru-menu-conf'|translate}}</span>
+      </button>
+
+      <button
+              ion-item
+              detail-none
+              *ngIf="_us.activo()"
+              (click)="salir(index)">
+              <span item-end>{{'salir'|translate}}</span>
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #mycontent></ion-nav>

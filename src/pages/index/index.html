@@ -1,0 +1,47 @@
+<ion-content text-center color="dark">
+
+  <div class="img_fondo"></div>
+
+  <div padding>
+    <ion-list>
+      <ion-item color="dark">
+        <ion-label floating>{{'index-register-label'|translate}}</ion-label>
+        <ion-input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [(ngModel)]="username"></ion-input>
+      </ion-item>
+
+      <ion-item color="dark">
+        <ion-label floating>{{'index-registro-contrasena'|translate}}</ion-label>
+        <ion-input type="password" [(ngModel)]="password"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <button block ion-button [disabled]=" username.length < 5 || password.length < 5" clear color=white class="pb-15"
+      (click)="ingresar()">
+      <h3>{{'general-button-accept'|translate}}</h3>
+    </button>
+
+    <button block ion-button color=colormuuwho class="pt-15" clear (click)="registrate()">
+      {{'registrate-user'|translate}}
+    </button>
+
+    <ion-grid>
+      <footer>
+        <ion-row justify-content-center>
+
+          <ion-col col-12>
+            <ion-title>Muuwho de México S.A.P.I. de C.V. <br>
+              <span>&#169; Copyright {{anio}}</span>
+            </ion-title>
+          </ion-col>
+
+          <ion-col col-12>
+            <idioma></idioma>
+          </ion-col>
+
+        </ion-row>
+      </footer>
+    </ion-grid>
+
+  </div>
+
+</ion-content>

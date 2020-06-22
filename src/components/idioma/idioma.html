@@ -1,0 +1,7 @@
+<ion-item col-12>
+  <ion-select [(ngModel)]="idioma" (ionChange)="changeLanguage($event)">
+    <ion-label>{{'elegir-idioma'|translate}}</ion-label>
+     <ion-option value="en" selected="true">English</ion-option>
+     <ion-option value="es">Spanish</ion-option>
+  </ion-select>
+</ion-item>

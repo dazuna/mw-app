@@ -1,0 +1,27 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{'buscarcontactos'|translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-searchbar (ionInput)="buscar($event)"></ion-searchbar>
+
+  <ion-list>
+    <ion-item *ngFor="let contacto of filtrar('1')">
+      <ion-avatar item-start>
+        <img src="{{contacto.profileImage}}">
+      </ion-avatar>
+      <h2>{{contacto.nombre}} {{contacto.apellidos}}</h2>
+      <button ion-button
+      clear
+      item-end
+      (click)="verperfil(contacto)">{{'headeru-more-lbl'|translate}}</button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

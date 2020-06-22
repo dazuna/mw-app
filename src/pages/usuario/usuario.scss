@@ -1,0 +1,46 @@
+page-usuario {
+  .img_user{
+    width: 200px;
+    height: 200px;
+    text-align: center !important;
+    margin: -50px auto auto;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  h3{
+    color: #646b63 !important;
+    font-size: 2.2rem;
+    font-weight: bold;
+  }
+  .icono-left{
+    max-width: 10%;
+  }
+  .headerImage{
+    height: 12em;
+    width: 100%;
+    object-fit: cover;
+  }
+  .iconCameraHeader{
+    z-index: 1;
+    position: absolute;
+    border: 3px solid white;
+    border-radius: 15%;
+    background-color: silver;
+    margin: 4% 0 0 3%;
+    width: 1.5em;
+    height: 1.3em;
+    padding-left: .13em;
+  }
+  .iconCamera{
+    position: absolute;
+    z-index: 1;
+    margin-top: -13%;
+    margin-left: 13%;
+    border-radius: 100%;
+    border: 3px solid white;
+    background-color: silver;
+    width: 2em;
+    height: 2em;
+    padding-top: 1.3%;
+  }
+}

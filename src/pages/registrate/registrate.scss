@@ -1,0 +1,36 @@
+page-registrate {
+  h1{
+    color: #ff6d00 !important;
+  }
+  .img_fondo{
+
+    background: url('../assets/imgs/img_mensajes_m3.jpg') ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: transparent;
+    background-position: center center;
+    height: 30%;
+    max-width: 100%;
+  }
+  // .toolbar-title-ios{
+  //   color: rgb(3, 3, 3) !important;
+  // }
+  // .item-md.item-block .item-inner{
+  //   border-bottom: 0 !important;
+  // }
+
+  // .item-ios.item-block .item-inner{
+  //   border-bottom: 0 !important;
+  // }
+
+  .error {
+    color: rgb(223, 62, 62);
+    font-size: 11px;
+  }
+
+  .error1 {
+    color: rgb(75, 75, 75);
+    border-bottom: 1px solid #ff0000;
+  }
+
+}

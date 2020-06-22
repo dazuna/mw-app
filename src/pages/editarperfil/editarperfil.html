@@ -1,0 +1,204 @@
+<ion-header>
+
+  <ion-navbar text-center>
+    <ion-title>{{'editar-perfil'|translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content>
+  <h3 text-center>{{'ppp-heads-summary'|translate}}</h3>
+  <ion-item>
+    <ion-label fixed>{{'publish-bill-name'|translate}}:</ion-label>
+    <ion-input name="nombre" [(ngModel)]="usuario.nombre"></ion-input>
+    <br>
+  </ion-item>
+
+  <ion-item>
+    <ion-label fixed>{{'index-user-apellido'|translate}}:</ion-label>
+    <ion-input name="apellido" [(ngModel)]="usuario.apellidos"></ion-input>
+    <br>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>{{'index-user-cumpleaños'|translate}}:</ion-label>
+    <ion-datetime name="fecha" type="texts" [(ngModel)]="usuario.fechanac" display-format="MM/YYYY"
+      picker-format="MMMM YYYY" [min]="minDate" [max]="maxDate"></ion-datetime>
+    <br>
+  </ion-item>
+
+  <ion-item>
+    <ion-label fixed>{{'ecandidates-modal-phone'|translate}}:</ion-label>
+    <ion-input name="telefono" type="text" (keypress)="numerotelefono($event)" maxlength="10"
+      [(ngModel)]="usuario.telefono"></ion-input>
+    <br>
+  </ion-item>
+
+  <ion-item>
+    <ion-label fixed>{{'fulloffer-icons-location'|translate}}:</ion-label>
+    <ion-input name="ubicacion" [(ngModel)]="usuario.ubicacion"></ion-input>
+    <br>
+  </ion-item>
+
+  <ion-item>
+    <ion-label fixed>{{'index-compregistration-countrylbl'|translate}}:</ion-label>
+    <ion-input name="pais" [(ngModel)]="usuario.pais"></ion-input>
+    <br>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>{{'ppe-info-gender'|translate}}:</ion-label>
+    <ion-select [(ngModel)]="usuario.genero">
+      <ion-option value="female">Female</ion-option>
+      <ion-option value="male">Male</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item >
+    <ion-label>{{'fulloffer-description-label'|translate}}:</ion-label>
+    <ion-textarea name="description" [(ngModel)]="usuario.personaldesc"></ion-textarea>
+  </ion-item>
+
+  <h3 text-center>{{'ppp-heads-school'|translate}}</h3>
+
+  <ion-grid>
+    <ion-row>
+      <ion-card *ngFor="let item of academica">
+        <ion-item text-right>
+          <a (click)="deleteAcad(item)">
+            <ion-icon name="ios-close-circle-outline" style="zoom:1.3;"></ion-icon>
+          </a>
+        </ion-item>
+        <ion-item>
+          <ion-label fixed>{{'institucion'|translate}}:</ion-label>
+          <ion-input name="institucion" [(ngModel)]="item.academicInstitution"></ion-input>
+          <br>
+        </ion-item>
+
+        <ion-item>
+          <ion-label fixed>{{'programa-cursado'|translate}}:</ion-label>
+          <ion-input name="curso" [(ngModel)]="item.program"></ion-input>
+          <br>
+        </ion-item>
+
+        <ion-col col-6>
+          <h5 text-center>{{'ppe-date-start'|translate}}</h5>
+          <ion-item>
+            <ion-datetime name="fechainicio" type="texts" display-format="MM/YYYY" picker-format="MMMM YYYY"
+              [min]="minDate" [max]="maxDate" [(ngModel)]="item.startDate">
+            </ion-datetime>
+            <br>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-6 *ngIf=" item.currentlyStudying == false">
+          <h5 text-center>{{'ppe-date-end'|translate}}</h5>
+          <br>
+          <ion-item>
+            <ion-datetime class="centrar" name="fechafinal" type="texts" display-format="MM/YYYY"
+              picker-format="MMMM YYYY" [min]="minDate" [max]="maxDate" [(ngModel)]="item.endDate"></ion-datetime>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-12>
+          <ion-item>
+            <ion-label>{{'ppe-school-now'|translate}}</ion-label>
+            <ion-checkbox color="dark" [(ngModel)]="item.currentlyStudying"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <a text-center (click)="addAcad()">
+      <ion-icon name="add"></ion-icon>
+      {{'ppe-school-add'|translate}}
+    </a>
+  </ion-grid>
+
+  <h3 text-center>{{'ppp-heads-work'|translate}}</h3>
+
+  <ion-grid>
+    <ion-row>
+      <ion-card *ngFor="let item of trabajo">
+        <ion-item text-right>
+          <a (click)="deleteWork(item)">
+            <ion-icon name="ios-close-circle-outline" style="zoom:1.3;"></ion-icon>
+          </a>
+        </ion-item>
+        <ion-item>
+          <ion-label fixed>{{'publish-preview-company' | translate}}:</ion-label>
+          <ion-input name="institucion" [(ngModel)]="item.company"></ion-input>
+          <br>
+        </ion-item>
+
+        <ion-item>
+          <ion-label fixed>{{'posicion'|translate}}:</ion-label>
+          <ion-input name="curso" [(ngModel)]="item.position"></ion-input>
+          <br>
+        </ion-item>
+
+        <ion-item>
+          <ion-label fixed>{{ 'responsabilidades' | translate }}:</ion-label>
+          <ion-input name="curso" [(ngModel)]="item.responsibilities"></ion-input>
+          <br>
+        </ion-item>
+
+        <ion-item>
+          <ion-label fixed>{{'logros-obtenidos' | translate}}:</ion-label>
+          <ion-input name="curso" [(ngModel)]="item.achievements"></ion-input>
+          <br>
+        </ion-item>
+
+        <ion-col col-6>
+          <h5 text-center>{{'ppe-date-start'|translate}}</h5>
+          <ion-item>
+            <ion-datetime name="fechainicio" type="texts" display-format="MM/YYYY" picker-format="MMMM YYYY"
+              [min]="minDate" [max]="maxDate" [(ngModel)]="item.startDate"></ion-datetime>
+            <br>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-6 *ngIf=" item.currentWork == false">
+          <h5 text-center>{{'ppe-date-end'|translate}}</h5>
+          <ion-item>
+            <ion-datetime class="centrar" name="fechafinal" type="texts" display-format="MM/YYYY"
+              picker-format="MMMM YYYY" [min]="minDate" [max]="maxDate" [(ngModel)]="item.endDate"></ion-datetime>
+            <br>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-12>
+          <ion-item>
+            <ion-label>{{'ppe-job-now'|translate}}</ion-label>
+            <ion-checkbox color="dark" [(ngModel)]="item.currentWork"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+      </ion-card>
+
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <a text-center (click)="addWork()">
+      <ion-icon name="add"></ion-icon>
+      {{'ppe-job-add'|translate}}
+    </a>
+  </ion-grid>
+
+  <ion-buttons>
+    <button ion-button block color="dark" (click)="saveProfile()">
+      {{'ppe-button-save'|translate}}
+    </button>
+  </ion-buttons>
+  <h3 text-center>{{'index-userregistration-accessCode'|translate}}</h3>
+  <ion-item >
+    <ion-input name="accessCode" [(ngModel)]="accessCode" maxlength="6" placeholder="{{'index-accessCode'|translate}}"></ion-input>
+  </ion-item>
+  <ion-buttons>
+    <button ion-button block (click)="sendAccessCode()">
+      {{'general-button-send'|translate}} 
+    </button>
+  </ion-buttons>
+</ion-content>

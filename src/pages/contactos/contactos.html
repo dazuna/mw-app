@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button
+              icon-only
+              (click)="buscador()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>{{'ppp-info-contacts'|translate}}</ion-title>
+
+    <ion-buttons right>
+      <button ion-button
+              icon-only
+              menuToggle>
+                <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-refresher (ionRefresh)="recargar_contactos($event , contactos)">
+    <ion-refresher-content> </ion-refresher-content>
+  </ion-refresher>
+  <div padding>
+    <ion-segment [(ngModel)]="contact">
+      <ion-segment-button value="contact">
+        {{'ppp-info-contacts'|translate}}
+      </ion-segment-button>
+  
+      <ion-segment-button value="enviados">
+        {{'contacts-requests-label'|translate}}
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="contact">
+
+    <ion-list *ngSwitchCase="'contact'">
+      <h1 text-center>{{'ppp-info-contacts'|translate}}</h1>
+      <ion-item-sliding *ngFor="let contacto of contactos; let i = index;">
+        <ion-item>
+          <ion-thumbnail item-start>
+            <img src="{{contacto.profileImage}}">
+          </ion-thumbnail>
+          <h2>{{contacto.nombre}} {{ contacto.apellido }}</h2>
+          <p>{{contacto.abilidades}}</p>
+          <button (click)="verperfil(contacto)"
+          ion-button
+          clear
+          item-end>
+          {{'perfil'|translate}}</button>
+        </ion-item>
+
+        <ion-item-options side="right">
+            <button (click)="eliminar_amigo(contacto, i )"
+                    ion-button
+                    color="danger">
+              <ion-icon name="remove-circle"></ion-icon>
+              Dejar de seguir
+            </button>
+        </ion-item-options>
+
+
+      </ion-item-sliding>
+    </ion-list>
+
+
+    <ion-list *ngSwitchCase="'enviados'">
+      <h1 text-center>{{'contacts-requests-label'|translate}}</h1>
+
+      <ion-item *ngFor="let solicitud of solicitudes; let i = index">
+        <ion-avatar item-start>
+          <img src="{{solicitud.profileImage}}">
+        </ion-avatar>
+        <h5 (click)="versolicitud(solicitud)">{{solicitud.req}}</h5>
+        <ion-avatar item-end>
+          <ion-icon name="checkmark-circle"
+                    class="paloma"
+                    (click)="agregaramistad(solicitud, i)"
+                    padding></ion-icon>
+
+          <ion-icon name="close-circle"
+                    class="tache"
+                    (click)="borraramistad(solicitud, i)"
+                    padding></ion-icon>
+        </ion-avatar>
+      </ion-item>
+
+    </ion-list>
+
+  </div>
+
+</ion-content>

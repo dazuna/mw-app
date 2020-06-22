@@ -1,0 +1,34 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{'buscarofertas'|translate}}</ion-title>
+
+    <ion-buttons right>
+      <button (click)="cerrar()">
+        <ion-icon class="cerrar" name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-searchbar (ionInput)="buscar($event)"></ion-searchbar>
+
+  <ion-list>
+    <ion-item *ngFor="let oferta of ofertas">
+      <ion-avatar item-start>
+        <img src="{{oferta.profilePic}}">
+      </ion-avatar>
+      <h2>{{oferta.companyName}}</h2>
+      <p>{{oferta.puesto}}</p>
+      <button ion-button
+              clear
+              item-end
+              (click)="veroferta(oferta)">{{'headeru-more-lbl'|translate}}</button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

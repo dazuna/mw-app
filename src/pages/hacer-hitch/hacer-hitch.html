@@ -1,0 +1,80 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{oferta.companyName}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+
+    <ion-card-header>
+      <p>{{'tipo-oferta'|translate}}:</p>
+      <ion-card-title text-center>{{oferta.puesto}}</ion-card-title>
+    </ion-card-header>
+
+    <hr>
+
+    <ion-card-header text-center>
+      <p text-left>{{'modal-hitch-emaillbl'|translate}}.</p>
+
+      <!-- <form> -->
+      <ion-item style="border: 2px solid grey ;">
+        <ion-label>
+          <ion-icon name="mail" item-left></ion-icon>
+        </ion-label>
+        <ion-input [(ngModel)]="ce" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" type="email"
+          placeholder="{{'publish-bill-email'|translate}}"></ion-input>
+      </ion-item>
+      <br>
+      <button ion-button [disabled]="ce.length < 5" type="submit" (click)="email()" color="colormuuwho">
+        {{'modal-hitch-btn'|translate}}
+      </button>
+
+      <hr>
+
+      <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+      
+      <hr>
+      <p text-left> {{'tus-amigos'|translate}}: </p>
+
+      <form>
+        <ion-list>
+
+          <ion-item *ngFor="let contacto of _us.contactos">
+
+            <ion-avatar item-start>
+              <img src="{{contacto.profileImage}}">
+            </ion-avatar>
+
+            <ion-avatar text-center>
+              <h5>{{contacto.nombre}} {{ contacto.apellido }}</h5>
+            </ion-avatar>
+
+            <ion-avatar item-end>
+              <button ion-button block clear color="light" (click)="hitches(contacto)">
+                <ion-icon name="pint"></ion-icon>
+              </button>
+            </ion-avatar>
+
+            <hr>
+
+
+          </ion-item>
+
+          <hr>
+          <button block ion-button type="submit" color="danger" (click)="irAtras()">
+            {{'regresar'|translate}}
+          </button>
+
+        </ion-list>
+      </form>
+
+    </ion-card-header>
+
+  </ion-card>
+
+
+</ion-content>

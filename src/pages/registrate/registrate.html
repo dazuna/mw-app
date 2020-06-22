@@ -1,0 +1,161 @@
+<ion-header>
+  <ion-navbar color="colormuuwho">
+    <ion-title>{{'registrate-user'|translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content text-center>
+  <div class="img_fondo"></div>
+
+  <h1>{{'index-userregistration-welcomelabel'|translate}}</h1>
+
+  <ion-grid color="colormuuwho" style="background: #ff6d00; color: #fff;">
+    <ion-row>
+      <ion-col col-12>{{'recomendar-ganar'|translate}}</ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list>
+    <form novalidate (ngSubmit)="guardar()" [formGroup]="signupform">
+      <ion-item>
+        <ion-label stacked>{{'publish-bill-name'|translate}}</ion-label>
+        <ion-input type="text" [(ngModel)]="dato.nombre" formControlName="name"
+          [class.error1]="!signupform.controls.name.valid && signupform.controls.name.dirty"
+          placeholder="{{'campo-requerido'|translate}}"></ion-input>
+      </ion-item>
+
+      <ion-item no-lines
+        *ngIf="( signupform.get('name').hasError('minlength') || signupform.get('name').hasError('maxlength') ||signupform.get('name').hasError('pattern') ||signupform.get('name').hasError('required') ) && signupform.get('name').touched">
+        <div class="error" *ngIf="signupform.get('name').hasError('required') && signupform.get('name').touched">
+          {{'signupform-errName-emply'|translate}}
+        </div>
+        <div class="error" *ngIf="signupform.get('name').hasError('minlength') && signupform.get('name').touched">
+          {{'signupform-errName-min'|translate}}
+        </div>
+        <div class="error" *ngIf="signupform.get('name').hasError('maxlength') && signupform.get('name').touched">
+          {{'signupform-errName-max'|translate}}
+        </div>
+        <div class="error" *ngIf="signupform.get('name').hasError('pattern') && signupform.get('name').touched">
+          {{'signupform-errName-alphabet'|translate}}
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>{{'apellidos-datos'|translate}}</ion-label>
+        <ion-input type="text" [(ngModel)]="dato.apellidos" formControlName="lastname"
+          [class.error1]="!signupform.controls.lastname.valid && signupform.controls.lastname.dirty"
+          placeholder="{{'campo-requerido'|translate}}"></ion-input>
+      </ion-item>
+
+      <ion-item no-lines
+        *ngIf="( signupform.get('lastname').hasError('minlength') || signupform.get('lastname').hasError('maxlength') ||signupform.get('lastname').hasError('pattern') ||signupform.get('lastname').hasError('required') ) && signupform.get('lastname').touched">
+        <div class="error" *ngIf="signupform.get('lastname').hasError('required') && signupform.get('lastname').touched">
+          {{'signupform-errLastname-emply'|translate}}
+        </div>
+        <div class="error" *ngIf="signupform.get('lastname').hasError('minlength') && signupform.get('lastname').touched">
+          {{'signupform-errLastname-min'|translate}}
+        </div>
+        <div class="error" *ngIf="signupform.get('lastname').hasError('maxlength') && signupform.get('lastname').touched">
+          {{'signupform-errLastname-max'|translate}}
+        </div>
+        <div class="error" *ngIf="signupform.get('lastname').hasError('pattern') && signupform.get('lastname').touched">
+          {{'signupform-errLastname-alphabet'|translate}}
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>{{'publish-bill-email'|translate}}</ion-label>
+        <ion-input type="text" [(ngModel)]="dato.username" formControlName="email"
+          [class.error1]="!signupform.controls.email.valid && signupform.controls.email.dirty"
+          placeholder="{{'campo-requerido'|translate}}"></ion-input>
+      </ion-item>
+
+      <ion-item no-lines
+        *ngIf="( signupform.get('email').hasError('minlength') || signupform.get('email').hasError('pattern') ||signupform.get('email').hasError('required') ) && signupform.get('email').touched">
+        <div class="error" *ngIf="signupform.get('email').hasError('required') && signupform.get('email').touched">
+          {{'signupform-errEmail-emply'|translate}}
+        </div>
+        <div class="error" *ngIf="signupform.get('email').hasError('pattern') && signupform.get('email').touched">
+          {{'signupform-errEmail-format'|translate}}
+          <br>
+          {{'signupform-errEmail-format2'|translate}}
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>{{'index-registro-contrasena'|translate}}</ion-label>
+        <ion-input type="password" [(ngModel)]="pass" formControlName="password"
+          [class.error1]="!signupform.controls.password.valid && signupform.controls.password.dirty"
+          placeholder="{{'campo-requerido'|translate}}"></ion-input>
+      </ion-item>
+
+      <ion-item no-lines
+        *ngIf="( signupform.get('password').hasError('minlength') || signupform.get('password').hasError('maxlength') ||signupform.get('password').hasError('required') ) && signupform.get('password').touched">
+        <div class="error"
+          *ngIf="signupform.get('password').hasError('required') && signupform.get('password').touched">
+          {{'signupform-errPassword-emply'|translate}}
+        </div>
+        <div class="error"
+          *ngIf="signupform.get('password').hasError('minlength') && signupform.get('password').touched">
+          {{'signupform-errPassword-min'|translate}}
+        </div>
+        <div class="error"
+          *ngIf="signupform.get('password').hasError('maxlength') && signupform.get('password').touched">
+          {{'signupform-errPassword-max'|translate}}
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>{{'index-user-cumpleaños'|translate}}</ion-label>
+        <ion-datetime formControlName="birthday" type="texts" [(ngModel)]="dato.fechanac" display-format="MM/YYYY"
+          picker-format="MMMM YYYY" [min]="minDate" [max]="maxDate"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>{{'index-userregistration-phone'|translate}}</ion-label>
+        <ion-input formControlName="phone" [(ngModel)]="dato.telefono" type="tel"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>{{'fulloffer-icons-location'|translate}}</ion-label>
+        <ion-input formControlName="ubicacion" [(ngModel)]="dato.ubicacion" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>{{'index-userregistration-accessCode'|translate}}</ion-label>
+        <ion-input formControlName="accessCode" type="text" [(ngModel)]="accessCode" maxlength="6"></ion-input>
+      </ion-item>
+
+      <!-- <ion-item style="color:red;font-size:.8em;">*{{'campo-requerido'|translate}}</ion-item> -->
+
+      <ion-item text-center no-lines>
+        <ion-label>{{'index-userregistration-termscheckbox'|translate}}</ion-label>
+        <ion-checkbox color="colormuuwho" formControlName="terms" [(ngModel)]="terms"></ion-checkbox>
+      </ion-item>
+
+      <button ion-button color="colormuuwho" round
+        [disabled]="signupform.invalid">{{'general-button-accept'|translate}}</button>
+
+    </form>
+  </ion-list>
+
+  <ion-grid style="background: #070a1d; color: #fff;" margin-top>
+    <footer>
+      <ion-row justify-content-center>
+
+        <ion-col col-12>
+          <ion-title>Muuwho de México S.A.P.I. de C.V. <br>
+            <span>&#169; Copyright {{anio}}</span>
+          </ion-title>
+        </ion-col>
+
+        <ion-col class="seleccionar" col-9 no-lines>
+          <idioma></idioma>
+        </ion-col>
+
+      </ion-row>
+    </footer>
+  </ion-grid>
+
+</ion-content>

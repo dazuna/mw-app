@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{'buscarprivadas'|translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-searchbar (ionInput)="buscar($event)"></ion-searchbar>
+
+  <ion-list>
+    <ion-item *ngFor="let oferta_privada of op">
+      <ion-avatar item-start>
+        <img src="{{oferta_privada.profilePic}}">
+      </ion-avatar>
+      <h2>{{oferta_privada.companyName}}</h2>
+      <p>{{oferta_privada.puesto}}</p>
+      <button ion-button
+              clear
+              item-end
+              (click)="veroferta(oferta_privada)">{{'headeru-more-lbl'|translate}}</button>
+    </ion-item>
+  </ion-list>
+</ion-content>

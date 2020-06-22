@@ -1,0 +1,61 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title right>Hitch</ion-title>
+
+    <ion-buttons right>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div padding>
+    <ion-segment [(ngModel)]="hitchs">
+
+      <ion-segment-button value="enviados">
+        {{'enviados'|translate}}
+      </ion-segment-button>
+
+      <ion-segment-button value="guardados">
+        {{'recibidos'|translate}}
+      </ion-segment-button>
+
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="hitchs">
+    <h1 text-center>{{'tus_hitchs'|translate}}</h1>
+
+    <ion-list *ngSwitchCase="'enviados'">
+      <div *ngFor="let mis_hitchs of _us.guardados">
+        <ion-item *ngIf="mis_hitchs.username != mis_hitchs.idContact">
+          <h2>{{mis_hitchs.offerJob}}</h2>
+          <h3><b>{{'contact-head-lbl'|translate}}:</b> {{mis_hitchs.contactName}}</h3>
+          <ion-avatar item-end>
+            <img src="{{mis_hitchs.userProfilePic}}">
+          </ion-avatar>
+        </ion-item>
+      </div>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'guardados'">
+      <div >
+        <ion-item *ngFor="let hit of _us.hechos">
+          <h2>{{hit.offerJob}}</h2>
+          <h3><b>{{'contact-head-lbl'|translate}}:</b> {{hit.userName}}</h3>
+          <ion-avatar item-end>
+            <img src="{{hit.userPhoto}}">
+          </ion-avatar>
+        </ion-item>
+      </div>
+
+    </ion-list>
+
+  </div>
+
+</ion-content>

@@ -1,0 +1,53 @@
+page-index {
+  ion-content{
+    background-color: #070a1d !important;
+    color: #fff !important;
+  }
+  .img_fondo{
+    background: url('../assets/imgs/muuwho-letras.png') ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: transparent;
+    background-position: center center;
+    height: 50%;
+    max-width: 100%;
+  }
+  .item-md {
+    background-color: #070a1d !important;
+    color: #fff;
+  }
+  .list-md .item-input:last-child {
+    border-bottom: 0;
+  }
+  .iconos-redes{
+    line-height: 53px !important;
+    font-size: 30px !important;
+  }
+  pb-15{
+    padding-bottom: 15px;
+  }
+  pt-15{
+    padding-top: 15px;
+  }
+  footer{
+    background: #070a1d;
+  }
+  .toolbar-title-ios{
+    color: #fff;
+  }
+  .item-md.item-block .item-inner{
+    border-bottom: 0 !important;
+  }
+
+  .item-ios.item-block .item-inner{
+    border-bottom: 0 !important;
+  }
+}
+
+.list-ios > .item-block:first-child {
+  border-top: 0;
+}
+
+.list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block {
+  border-bottom: 0;
+}

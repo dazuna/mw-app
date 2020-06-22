@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar>
+    <ion-item color="hdoferta">
+      <h2>{{oferta.companyName}}</h2>
+    </ion-item>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card>
+
+    <ion-item>
+      <h2>{{oferta.companyName}}</h2>
+      <ion-avatar item-start>
+        <img src="{{oferta.profilePic}}">
+      </ion-avatar>
+    </ion-item>
+
+    <img class="headerImage" src="{{oferta.headerPic}}">
+
+    <ion-card-content>
+      <h2><b>{{'posicion'|translate}}:</b> {{oferta.puesto}}</h2>
+      <h2><b>{{'publish-modal-reward'|translate}}:</b> {{oferta.recompensa | currency:'USD':true}} US {{'lbl-usd'|translate}}</h2>
+      <div *ngIf= "oferta.sMinimo == ''">
+        <h3 class="inLine"><b>{{'index-offer-salary'|translate}}:</b>${{oferta.sMinimo}} </h3>
+        <p class="inLine">{{oferta.moneda}}</p>
+      </div>
+      <h4><b>{{'fulloffer-icons-location'|translate}}:</b> {{oferta.ciudadOferta}}</h4>
+      <p><b>{{'fulloffer-description-label'|translate}}:</b> {{oferta.descripcion}}</p>
+    </ion-card-content>
+
+    <ion-row class="justify-content-center">
+      <ion-col class="col-6">
+        <button ion-button block clear (click)="autohitch(oferta)" color="light">
+          <ion-icon name="paper-plane"></ion-icon>
+          &nbsp;{{'general-button-apply'|translate}} 
+        </button>
+      </ion-col>
+      <ion-col class="col-6">
+        <button ion-button block clear color="light" (click)="hitch(oferta)">
+          <ion-icon name="pint"></ion-icon>
+          &nbsp;{{'alerts-icons-hitch'|translate}}
+        </button>
+      </ion-col>
+
+
+
+    </ion-row>
+
+
+  </ion-card>
+
+  <button ion-button block color="colormuuwho" (click)="irAtras()">
+    {{'publish-modal-back'|translate}}
+  </button>
+</ion-content>

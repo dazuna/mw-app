@@ -1,0 +1,65 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title text-center>{{ perfil.nombre }} {{ perfil.apellidos }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <div text-center>
+    <img [src]="perfil.headerImage">
+    <img class="img_user" [src]="perfil.profileImage">
+    <h1>{{ perfil.nombre }} {{ perfil.apellidos }}</h1>
+  </div>
+
+  <hr>
+
+  <ion-card>
+    <ion-row>
+
+      <ion-col size="6">
+        <ion-card-header>
+          <h3>{{'ppp-heads-summary'|translate}}:</h3>
+        </ion-card-header>
+      </ion-col>
+
+</ion-row>
+
+        <ion-card-content>
+          <p text-center>{{perfil.personaldesc}}</p>
+        </ion-card-content>
+
+
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <h3>{{'ppp-heads-work'|translate}}:</h3>
+    </ion-card-header>
+    <ion-card-content>
+      <div *ngFor="let item of trabajo">
+        <h5 text-center> <b>{{'publish-preview-company' | translate}}:</b> <br> {{item.company}} </h5>
+        <p text-center> <b>{{'posicion'|translate}}:</b> <br> {{item.position}} <br> {{item.startDate}} / {{item.endDate}} </p>
+        <p text-center> <b>{{ 'responsabilidades' | translate }}:</b> <br> {{item.responsibilities}}</p>
+        <p text-center> <b>{{'logros-obtenidos' | translate}}:</b> <br> {{item.achievements}}</p>
+        <hr>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-card>
+    <ion-card-header>
+      <h3>{{'ppp-heads-school'|translate}}:</h3>
+    </ion-card-header>
+    <ion-card-content>
+      <div *ngFor="let item of academica">
+        <h5 text-center>{{item.academicInstitution}}</h5>
+        <p text-center>{{item.program}} <br> {{item.startDate}} / {{item.endDate}} </p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

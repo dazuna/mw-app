@@ -1,0 +1,21 @@
+page-solicitudes-userios {
+  .img_user{
+    max-width: 30%;
+    text-align: center !important;
+    margin: -50px auto auto;
+  }
+  h3{
+    color: #646b63 !important;
+    font-size: 2.2rem;
+    font-weight: bold;
+  }
+  .icono-left{
+    max-width: 10%;
+  }
+  ion-icon {
+    font-size: 2em !important;
+    float: right;
+    color: #4267b2;
+    padding: 0 10px;
+  }
+}
